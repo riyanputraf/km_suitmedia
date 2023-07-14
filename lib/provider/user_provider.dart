@@ -52,4 +52,17 @@ class UserProvider extends ChangeNotifier {
   Future<void> refreshData() async {
     _fetchUserList();
   }
+  String selectedUser = '';
+  String get getSelected => selectedUser;
+  void setSelectedUser(String user) {
+    selectedUser = user;
+    notifyListeners();
+  }
+}
+
+class UserCoba {
+  final int id;
+  final String name;
+
+  UserCoba({required this.id, required this.name});
 }

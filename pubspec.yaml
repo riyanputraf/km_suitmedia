@@ -38,6 +38,7 @@ dependencies:
   rflutter_alert: ^2.0.7
   http: ^1.1.0
   provider: ^6.0.5
+  shared_preferences: ^2.2.0
 
 
 dev_dependencies:
@@ -84,6 +85,8 @@ flutter:
           weight: 500
         - asset: assets/fonts/Poppins-SemiBold.ttf
           weight: 600
+        - asset: assets/fonts/Poppins-Regular.ttf
+          weight: 400
 
   #
   # For details regarding fonts from package dependencies,

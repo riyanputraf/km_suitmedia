@@ -1,10 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:suitmedia/data/api/api_service.dart';
+import 'package:suitmedia/data/models/user_model.dart';
 import 'package:suitmedia/pages/third_screen.dart';
+import 'package:suitmedia/provider/select_user_provider.dart';
+import 'package:suitmedia/provider/user_provider.dart';
 import 'package:suitmedia/theme.dart';
 
-class SecondScreen extends StatelessWidget {
+class SecondScreen extends StatefulWidget {
   const SecondScreen({Key? key, required this.name}) : super(key: key);
   final String name;
+
+  @override
+  State<SecondScreen> createState() => _SecondScreenState();
+}
+
+class _SecondScreenState extends State<SecondScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +46,7 @@ class SecondScreen extends StatelessWidget {
           style: semiBoldSubTitle,
         ),
         centerTitle: true,
-        bottom: PreferredSize(
+        bottom: const PreferredSize(
           preferredSize: Size.fromHeight(1),
           // Atur tinggi sesuai dengan lebar garis yang diinginkan
           child: Divider(
@@ -42,31 +59,34 @@ class SecondScreen extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 27),
         child: SingleChildScrollView(
           child: Container(
-            height: MediaQuery.of(context).size.height,
+            height: MediaQuery.of(context).size.height - 100,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(
                   height: 13,
                 ),
-                Text('Welcome'),
+                Text('Welcome', style: regular,),
                 SizedBox(
                   height: 2,
                 ),
                 Text(
-                  name,
+                  widget.name,
                   style: semiBoldSubTitle,
                 ),
                 SizedBox(
                   height: 222,
                 ),
-                Center(
-                  child: Text(
-                    'Selected User Name',
+                Consumer<SelectUserProvider>(builder: (context, state, _) {
+                  var selectedUsername = Provider.of<SelectUserProvider>(context).getSelected;
+                  return Center(
+                      child: Text(
+                    selectedUsername == ''
+                        ? 'Selected User Name'
+                        : selectedUsername,
                     style: semiBoldTitle,
-                  ),
-                ),
-                // SizedBox(height: 315,),
+                  ));
+                }),
                 Expanded(
                   child: Align(
                     alignment: Alignment.bottomCenter,
@@ -84,7 +104,8 @@ class SecondScreen extends StatelessWidget {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => ThirdScreen()),
+                              MaterialPageRoute(
+                                  builder: (context) => ThirdScreen()),
                             );
                           },
                           child: Text(

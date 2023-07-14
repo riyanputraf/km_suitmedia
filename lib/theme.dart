@@ -5,6 +5,7 @@ Color dark = Color(0xff04021D);
 Color grey = Color(0xff686777);
 
 //Textstyle
+TextStyle regular = TextStyle(color: dark, fontWeight: FontWeight.w400, fontSize: 12);
 TextStyle medium = TextStyle(color: Colors.white, fontWeight: FontWeight.w500);
 TextStyle mediumTitle = TextStyle(color: dark, fontWeight: FontWeight.w500, fontSize: 16);
 TextStyle semiBoldTitle = TextStyle(color: dark, fontWeight: FontWeight.w600, fontSize: 24);
