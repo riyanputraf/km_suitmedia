@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:suitmedia/pages/second_screen.dart';
 import 'package:suitmedia/theme.dart';
 
@@ -12,7 +13,7 @@ class FirstScreen extends StatefulWidget {
 class _FirstScreenState extends State<FirstScreen> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _palindromeController = TextEditingController();
-  String? _palindromeText;
+  late String _palindromeText;
 
   @override
   void dispose() {
@@ -20,6 +21,14 @@ class _FirstScreenState extends State<FirstScreen> {
     _nameController.dispose();
     _palindromeController.dispose();
     super.dispose();
+  }
+
+  bool checkPalindrome(String text) {
+    String cleanedText =
+        text.replaceAll(RegExp(r'[^a-zA-Z0-9]'), '').toLowerCase();
+    String reversedText =
+        String.fromCharCodes(cleanedText.runes.toList().reversed);
+    return cleanedText == reversedText;
   }
 
   @override
@@ -112,9 +121,49 @@ class _FirstScreenState extends State<FirstScreen> {
                             borderRadius: BorderRadius.circular(15))),
                     onPressed: () {
                       _palindromeText = _palindromeController.text;
-                      print(_palindromeText);
+
+                      if (checkPalindrome(_palindromeText)) {
+                        Alert(
+                          context: context,
+                          type: AlertType.success,
+                          title: "isPalindrome",
+                          desc: "Your input isPalindrome",
+                          buttons: [
+                            DialogButton(
+                              onPressed: () => Navigator.pop(context),
+                              width: 120,
+                              child: const Text(
+                                "Ok",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20),
+                              ),
+                            )
+                          ],
+                        ).show();
+                      } else {
+                        Alert(
+                          context: context,
+                          type: AlertType.error,
+                          title: "not palindrome",
+                          desc: "Your input not palindrome",
+                          buttons: [
+                            DialogButton(
+                              onPressed: () => Navigator.pop(context),
+                              width: 120,
+                              child: const Text(
+                                "Ok",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20),
+                              ),
+                            )
+                          ],
+                        ).show();
+                      }
                     },
-                    child: Text('Check', style: medium,),
+                    child: Text(
+                      'Check',
+                      style: medium,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -135,7 +184,10 @@ class _FirstScreenState extends State<FirstScreen> {
                         MaterialPageRoute(builder: (context) => SecondScreen()),
                       );
                     },
-                    child: Text('Next', style: medium,),
+                    child: Text(
+                      'Next',
+                      style: medium,
+                    ),
                   ),
                 ),
               ],
