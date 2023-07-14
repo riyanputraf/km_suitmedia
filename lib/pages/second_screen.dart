@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:suitmedia/pages/third_screen.dart';
 import 'package:suitmedia/theme.dart';
 
 class SecondScreen extends StatelessWidget {
-  const SecondScreen({Key? key}) : super(key: key);
+  const SecondScreen({Key? key, required this.name}) : super(key: key);
+  final String name;
 
   @override
   Widget build(BuildContext context) {
@@ -51,12 +53,18 @@ class SecondScreen extends StatelessWidget {
                 SizedBox(
                   height: 2,
                 ),
-                Text('John Does', style: semiBoldSubTitle,),
+                Text(
+                  name,
+                  style: semiBoldSubTitle,
+                ),
                 SizedBox(
                   height: 222,
                 ),
                 Center(
-                  child: Text('Selected User Name', style: semiBoldTitle,),
+                  child: Text(
+                    'Selected User Name',
+                    style: semiBoldTitle,
+                  ),
                 ),
                 // SizedBox(height: 315,),
                 Expanded(
@@ -73,8 +81,16 @@ class SecondScreen extends StatelessWidget {
                               primary: Color(0xff2B637B),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15))),
-                          onPressed: () {},
-                          child: Text('Next', style: medium,),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => ThirdScreen()),
+                            );
+                          },
+                          child: Text(
+                            'Chose a User',
+                            style: medium,
+                          ),
                         ),
                       ),
                     ),

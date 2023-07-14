@@ -179,9 +179,10 @@ class _FirstScreenState extends State<FirstScreen> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15))),
                     onPressed: () {
+                      String name = _nameController.text;
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => SecondScreen()),
+                        MaterialPageRoute(builder: (context) => SecondScreen(name: name,)),
                       );
                     },
                     child: Text(
