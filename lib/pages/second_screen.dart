@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:suitmedia/theme.dart';
 
 class SecondScreen extends StatelessWidget {
   const SecondScreen({Key? key}) : super(key: key);
@@ -23,7 +24,7 @@ class SecondScreen extends StatelessWidget {
         ),
         title: Text(
           'Second Screen',
-          style: TextStyle(color: Colors.black),
+          style: semiBoldSubTitle,
         ),
         centerTitle: true,
         bottom: PreferredSize(
@@ -35,26 +36,6 @@ class SecondScreen extends StatelessWidget {
           ),
         ),
       ),
-      // body: ListView(
-      //   children: [
-      //     Container(
-      //       height: 500,
-      //       child: Column(
-      //         children: [
-      //           Expanded(
-      //             child: Align(
-      //               alignment: Alignment.bottomCenter,
-      //               child: ElevatedButton(
-      //                 onPressed: (){},
-      //                 child: Text('h'),
-      //               ),
-      //             ),
-      //           ),
-      //         ],
-      //       ),
-      //     ),
-      //   ],
-      // ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 27),
         child: SingleChildScrollView(
@@ -70,12 +51,12 @@ class SecondScreen extends StatelessWidget {
                 SizedBox(
                   height: 2,
                 ),
-                Text('John Does'),
+                Text('John Does', style: semiBoldSubTitle,),
                 SizedBox(
                   height: 222,
                 ),
                 Center(
-                  child: Text('Selected User Name'),
+                  child: Text('Selected User Name', style: semiBoldTitle,),
                 ),
                 // SizedBox(height: 315,),
                 Expanded(
@@ -93,7 +74,7 @@ class SecondScreen extends StatelessWidget {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15))),
                           onPressed: () {},
-                          child: Text('Next'),
+                          child: Text('Next', style: medium,),
                         ),
                       ),
                     ),

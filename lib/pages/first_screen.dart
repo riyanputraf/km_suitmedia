@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:suitmedia/pages/second_screen.dart';
+import 'package:suitmedia/theme.dart';
 
 class FirstScreen extends StatefulWidget {
   const FirstScreen({Key? key}) : super(key: key);
@@ -10,7 +11,16 @@ class FirstScreen extends StatefulWidget {
 
 class _FirstScreenState extends State<FirstScreen> {
   final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _palindrome = TextEditingController();
+  final TextEditingController _palindromeController = TextEditingController();
+  String? _palindromeText;
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _nameController.dispose();
+    _palindromeController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +81,7 @@ class _FirstScreenState extends State<FirstScreen> {
                     height: 47,
                     width: 310,
                     child: TextField(
-                      controller: _palindrome,
+                      controller: _palindromeController,
                       keyboardType: TextInputType.name,
                       autocorrect: false,
                       cursorColor: Colors.black,
@@ -88,41 +98,44 @@ class _FirstScreenState extends State<FirstScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: 45,),
-                Container(
-                  width: 310,
-                  height: 41,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      elevation: 7,
-                      primary: Color(0xff2B637B),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15)
-                      )
-                    ),
-                    onPressed: (){},
-                    child: Text('Check'),
-                  ),
+                SizedBox(
+                  height: 45,
                 ),
-                SizedBox(height: 15,),
                 Container(
                   width: 310,
                   height: 41,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         elevation: 7,
-                        primary: Color(0xff2B637B),
+                        primary: blueBtn,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15)
-                        )
-                    ),
-                    onPressed: (){
+                            borderRadius: BorderRadius.circular(15))),
+                    onPressed: () {
+                      _palindromeText = _palindromeController.text;
+                      print(_palindromeText);
+                    },
+                    child: Text('Check', style: medium,),
+                  ),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Container(
+                  width: 310,
+                  height: 41,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        elevation: 7,
+                        primary: blueBtn,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15))),
+                    onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => SecondScreen()),
                       );
                     },
-                    child: Text('Next'),
+                    child: Text('Next', style: medium,),
                   ),
                 ),
               ],
