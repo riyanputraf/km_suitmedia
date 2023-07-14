@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:suitmedia/data/models/user_model.dart';
 import 'package:suitmedia/theme.dart';
 
 class CardUser extends StatelessWidget {
-  const CardUser({Key? key}) : super(key: key);
+  final UserData userData;
+  const CardUser({Key? key, required this.userData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +19,8 @@ class CardUser extends StatelessWidget {
                 Container(
                   clipBehavior: Clip.hardEdge,
                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
-                  child: Image.asset(
-                    'assets/images/user.png',
+                  child: Image.network(
+                    userData.avatar,
                     width: 49,
                     height: 49,
                   ),
@@ -27,8 +29,8 @@ class CardUser extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('firstname lastname', style: mediumTitle,),
-                    Text('email@email.com', style: subTitleGrey,),
+                    Text('${userData.firstName} ${userData.lastName}', style: mediumTitle,),
+                    Text(userData.email, style: subTitleGrey,),
                   ],
                 )
               ],

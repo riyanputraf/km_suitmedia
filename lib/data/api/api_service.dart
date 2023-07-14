@@ -19,8 +19,8 @@ class ApiService {
   //   }
   // }
 
-  Future<Users> listRestaurant(http.Client client) async {
-    final response = await http.get(Uri.parse('https://restaurant-api.dicoding.dev/list'));
+  Future<Users> listUser(http.Client client) async {
+    final response = await http.get(Uri.parse('https://reqres.in/api/users?page=1&per_page=12'));
     if (response.statusCode == 200) {
       return Users.fromJson(json.decode(response.body));
     } else {

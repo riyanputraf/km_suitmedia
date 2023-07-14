@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:suitmedia/data/api/api_service.dart';
+import 'package:suitmedia/provider/user_provider.dart';
 import 'package:suitmedia/theme.dart';
 import 'package:suitmedia/widget/card_user.dart';
 
@@ -37,7 +40,54 @@ class ThirdScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: CardUser(),
+      body: ChangeNotifierProvider<UserProvider>(
+        create: (_) => UserProvider(apiService: ApiService()),
+        child: Consumer<UserProvider>(builder: (context, state, _) {
+          if (state.state == ResultState.loading) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state.state == ResultState.hasData) {
+            return RefreshIndicator(
+              onRefresh: () => state.refreshData(),
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: state.result.data.length,
+                itemBuilder: (context, index) {
+                  var user = state.result.data[index];
+                  return Column(
+                    children: [
+                      CardUser(
+                        userData: user,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 30.0),
+                        child: Divider(),
+                      ),
+                    ],
+                  );
+                },
+              ),
+            );
+          } else if (state.state == ResultState.noData) {
+            return Center(
+              child: Material(
+                child: Text(state.message),
+              ),
+            );
+          } else if (state.state == ResultState.error) {
+            return Center(
+              child: Material(
+                child: Text(state.message),
+              ),
+            );
+          } else {
+            return const Center(
+              child: Material(
+                child: Text(''),
+              ),
+            );
+          }
+        }),
+      ),
     ));
   }
 }
