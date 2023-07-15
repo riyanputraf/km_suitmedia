@@ -68,13 +68,15 @@ class _FirstScreenState extends State<FirstScreen> {
                       keyboardType: TextInputType.name,
                       autocorrect: false,
                       cursorColor: Colors.black,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(
+                      decoration: InputDecoration(
+                        border: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(
                             Radius.circular(15),
                           ),
                         ),
+                        contentPadding: EdgeInsets.all(10.0),
                         hintText: 'Name',
+                        hintStyle: hintStyle,
                         filled: true,
                         fillColor: Colors.white,
                         isDense: true,
@@ -94,11 +96,13 @@ class _FirstScreenState extends State<FirstScreen> {
                       keyboardType: TextInputType.name,
                       autocorrect: false,
                       cursorColor: Colors.black,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.all(10.0),
                         hintText: 'Palindrome',
+                        hintStyle: hintStyle,
                         filled: true,
                         fillColor: Colors.white,
-                        border: OutlineInputBorder(
+                        border: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(
                             Radius.circular(15),
                           ),
@@ -161,7 +165,7 @@ class _FirstScreenState extends State<FirstScreen> {
                       }
                     },
                     child: Text(
-                      'Check',
+                      'CHECK',
                       style: medium,
                     ),
                   ),
@@ -186,7 +190,7 @@ class _FirstScreenState extends State<FirstScreen> {
                       );
                     },
                     child: Text(
-                      'Next',
+                      'NEXT',
                       style: medium,
                     ),
                   ),

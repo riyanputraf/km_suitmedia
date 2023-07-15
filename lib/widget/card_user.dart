@@ -19,7 +19,7 @@ class CardUser extends StatelessWidget {
             .setSelectedUser(selectedUsername);
       },
       child: Padding(
-        padding: EdgeInsets.all(38),
+        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 18),
         child: Column(
           children: [
             Row(

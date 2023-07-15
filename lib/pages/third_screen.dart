@@ -27,7 +27,8 @@ class ThirdScreen extends StatelessWidget {
           onPressed: () async {
             final SharedPreferences selectedUsernamePref =
                 await SharedPreferences.getInstance();
-            var dataPreferences = selectedUsernamePref.getString('selectedUsername');
+            var dataPreferences =
+                selectedUsernamePref.getString('selectedUsername');
             print(dataPreferences);
             Navigator.pop(context);
           },
@@ -37,12 +38,11 @@ class ThirdScreen extends StatelessWidget {
           style: semiBoldSubTitle,
         ),
         centerTitle: true,
-        bottom: PreferredSize(
+        bottom: const PreferredSize(
           preferredSize: Size.fromHeight(1),
-          // Atur tinggi sesuai dengan lebar garis yang diinginkan
           child: Divider(
-            color: Colors.black, // Atur warna garis sesuai dengan kebutuhan
-            thickness: 0.1, // Atur ketebalan garis sesuai dengan kebutuhan
+            color: Colors.black,
+            thickness: 0.1,
           ),
         ),
       ),
