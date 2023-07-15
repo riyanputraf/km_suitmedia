@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:suitmedia/data/models/user_model.dart';
 import 'package:suitmedia/provider/select_user_provider.dart';
-import 'package:suitmedia/theme.dart';
+import 'package:suitmedia/utils/theme.dart';
 
 class CardUser extends StatelessWidget {
   final UserData userData;

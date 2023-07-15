@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:suitmedia/data/api/api_service.dart';
 import 'package:suitmedia/provider/select_user_provider.dart';
 import 'package:suitmedia/provider/user_provider.dart';
-import 'package:suitmedia/theme.dart';
+import 'package:suitmedia/utils/theme.dart';
 import 'package:suitmedia/widget/card_user.dart';
 
 class ThirdScreen extends StatelessWidget {

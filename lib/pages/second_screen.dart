@@ -6,7 +6,7 @@ import 'package:suitmedia/data/models/user_model.dart';
 import 'package:suitmedia/pages/third_screen.dart';
 import 'package:suitmedia/provider/select_user_provider.dart';
 import 'package:suitmedia/provider/user_provider.dart';
-import 'package:suitmedia/theme.dart';
+import 'package:suitmedia/utils/theme.dart';
 
 class SecondScreen extends StatefulWidget {
   const SecondScreen({Key? key, required this.name}) : super(key: key);
@@ -71,7 +71,7 @@ class _SecondScreenState extends State<SecondScreen> {
                   height: 2,
                 ),
                 Text(
-                  widget.name,
+                  widget.name == '' ? 'User' : widget.name,
                   style: semiBoldSubTitle,
                 ),
                 SizedBox(

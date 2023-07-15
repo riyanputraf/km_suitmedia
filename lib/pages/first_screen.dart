@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:suitmedia/pages/second_screen.dart';
-import 'package:suitmedia/theme.dart';
+import 'package:suitmedia/provider/select_user_provider.dart';
+import 'package:suitmedia/utils/theme.dart';
 
 class FirstScreen extends StatefulWidget {
   const FirstScreen({Key? key}) : super(key: key);
@@ -125,6 +127,8 @@ class _FirstScreenState extends State<FirstScreen> {
                             borderRadius: BorderRadius.circular(15))),
                     onPressed: () {
                       _palindromeText = _palindromeController.text;
+                      Provider.of<SelectUserProvider>(context, listen: false)
+                          .setSelectedName(_nameController.text);
 
                       if (checkPalindrome(_palindromeText)) {
                         Alert(
@@ -186,7 +190,10 @@ class _FirstScreenState extends State<FirstScreen> {
                       String name = _nameController.text;
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => SecondScreen(name: name,)),
+                        MaterialPageRoute(
+                            builder: (context) => SecondScreen(
+                                  name: name,
+                                )),
                       );
                     },
                     child: Text(
