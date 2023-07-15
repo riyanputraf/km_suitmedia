@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:suitmedia/pages/second_screen.dart';
-import 'package:suitmedia/provider/select_user_provider.dart';
 import 'package:suitmedia/utils/theme.dart';
 
 class FirstScreen extends StatefulWidget {
@@ -48,7 +46,7 @@ class _FirstScreenState extends State<FirstScreen> {
             ),
             Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 186,
                 ),
                 Center(
@@ -58,11 +56,11 @@ class _FirstScreenState extends State<FirstScreen> {
                     height: 116,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 51,
                 ),
                 Center(
-                  child: Container(
+                  child: SizedBox(
                     height: 47,
                     width: 310,
                     child: TextField(
@@ -76,7 +74,7 @@ class _FirstScreenState extends State<FirstScreen> {
                             Radius.circular(15),
                           ),
                         ),
-                        contentPadding: EdgeInsets.all(10.0),
+                        contentPadding: const EdgeInsets.all(10.0),
                         hintText: 'Name',
                         hintStyle: hintStyle,
                         filled: true,
@@ -86,11 +84,11 @@ class _FirstScreenState extends State<FirstScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 Center(
-                  child: Container(
+                  child: SizedBox(
                     height: 47,
                     width: 310,
                     child: TextField(
@@ -99,7 +97,7 @@ class _FirstScreenState extends State<FirstScreen> {
                       autocorrect: false,
                       cursorColor: Colors.black,
                       decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(10.0),
+                        contentPadding: const EdgeInsets.all(10.0),
                         hintText: 'Palindrome',
                         hintStyle: hintStyle,
                         filled: true,
@@ -113,22 +111,20 @@ class _FirstScreenState extends State<FirstScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 45,
                 ),
-                Container(
+                SizedBox(
                   width: 310,
                   height: 41,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         elevation: 7,
-                        primary: blueBtn,
+                        backgroundColor: blueBtn,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15))),
                     onPressed: () {
                       _palindromeText = _palindromeController.text;
-                      Provider.of<SelectUserProvider>(context, listen: false)
-                          .setSelectedName(_nameController.text);
 
                       if (checkPalindrome(_palindromeText)) {
                         Alert(
@@ -174,16 +170,16 @@ class _FirstScreenState extends State<FirstScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
-                Container(
+                SizedBox(
                   width: 310,
                   height: 41,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         elevation: 7,
-                        primary: blueBtn,
+                        backgroundColor: blueBtn,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15))),
                     onPressed: () {

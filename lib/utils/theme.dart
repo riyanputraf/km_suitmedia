@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-Color blueBtn = Color(0xff2B637B);
-Color dark = Color(0xff04021D);
-Color grey = Color(0xff686777);
-Color white = Color(0xffFFFFFF);
+Color blueBtn = const Color(0xff2B637B);
+Color dark = const Color(0xff04021D);
+Color grey = const Color(0xff686777);
+Color white = const Color(0xffFFFFFF);
 
 
 //Textstyle

@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:suitmedia/data/api/api_service.dart';
-import 'package:suitmedia/data/models/user_model.dart';
 import 'package:suitmedia/pages/third_screen.dart';
 import 'package:suitmedia/provider/select_user_provider.dart';
-import 'package:suitmedia/provider/user_provider.dart';
 import 'package:suitmedia/utils/theme.dart';
 
 class SecondScreen extends StatefulWidget {
@@ -56,9 +52,9 @@ class _SecondScreenState extends State<SecondScreen> {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 27),
+        padding: const EdgeInsets.symmetric(horizontal: 27),
         child: SingleChildScrollView(
-          child: Container(
+          child: SizedBox(
             height: MediaQuery.of(context).size.height - 100,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,19 +62,23 @@ class _SecondScreenState extends State<SecondScreen> {
                 const SizedBox(
                   height: 13,
                 ),
-                Text('Welcome', style: regular,),
-                SizedBox(
+                Text(
+                  'Welcome',
+                  style: regular,
+                ),
+                const SizedBox(
                   height: 2,
                 ),
                 Text(
                   widget.name == '' ? 'User' : widget.name,
                   style: semiBoldSubTitle,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 222,
                 ),
                 Consumer<SelectUserProvider>(builder: (context, state, _) {
-                  var selectedUsername = Provider.of<SelectUserProvider>(context).getSelected;
+                  var selectedUsername =
+                      Provider.of<SelectUserProvider>(context).getSelected;
                   return Center(
                       child: Text(
                     selectedUsername == ''
@@ -91,21 +91,21 @@ class _SecondScreenState extends State<SecondScreen> {
                   child: Align(
                     alignment: Alignment.bottomCenter,
                     child: Padding(
-                      padding: EdgeInsets.only(bottom: 32),
-                      child: Container(
+                      padding: const EdgeInsets.only(bottom: 32),
+                      child: SizedBox(
                         width: 310,
                         height: 41,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               elevation: 7,
-                              primary: Color(0xff2B637B),
+                              backgroundColor: const Color(0xff2B637B),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15))),
                           onPressed: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ThirdScreen()),
+                                  builder: (context) => const ThirdScreen()),
                             );
                           },
                           child: Text(

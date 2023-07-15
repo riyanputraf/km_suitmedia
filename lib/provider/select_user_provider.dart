@@ -8,10 +8,4 @@ class SelectUserProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  String nameUser = '';
-  String get getName => nameUser;
-  void setSelectedName(String name) {
-    nameUser = name;
-    notifyListeners();
-  }
 }

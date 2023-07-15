@@ -38,7 +38,7 @@ class UserProvider extends ChangeNotifier {
         notifyListeners();
         return _userResult = user;
       }
-    }on SocketException catch (e){
+    }on SocketException {
       _state = ResultState.error;
       notifyListeners();
       return _message = 'No internet connection';
