@@ -17,6 +17,13 @@ class CardUser extends StatelessWidget {
         String selectedUsername = '${userData.firstName}${userData.lastName}';
         Provider.of<SelectUserProvider>(context, listen: false)
             .setSelectedUser(selectedUsername);
+
+        ScaffoldMessenger.of(context).showSnackBar(
+           SnackBar(
+            content: Text('You select ${selectedUsername}. Please check in Second Screen'),
+            duration: Duration(seconds: 2),
+          ),
+        );
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 38, vertical: 18),
